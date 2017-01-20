@@ -1,15 +1,5 @@
-ENPGame/GAIColCore/GAIColCore32.lib
-ENPGame/GAIColCore/GAIColCore32d.lib
-ENPGame/GAICore/GAICore32.lib
-ENPGame/GAICore/GAICore32d.lib
-ENPGame/GCharCore/GCharCore32d.lib
-ENPGame/GCoreLibV2/GCoreLib32d.lib
-ENPGame/GEffectCore/GEffectCore32d.lib
-ENPGame/GMapCore/GMapCore32d.lib
-ENPGame/GCharCore/GCharCore32.lib
-ENPGame/GCoreLibV2/GCoreLib32.lib
-ENPGame/GEffectCore/GEffectCore32.lib
-ENPGame/GMapCore/GMapCore32.lib
+ENP2/Temp/
+ENP2/Library/
 *.obj.enc
 Output/HWInfo.txt
 *.VC.VC.opendb
