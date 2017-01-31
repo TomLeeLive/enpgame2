@@ -18,21 +18,25 @@ public class MenuButton1 : MonoBehaviour
     //	void Update () {
 
     //	}
-    public Button yourButton;
+    //public Button yourButton;
 
     void Start()
     {
-        Button btn = yourButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        //Button btn = yourButton.GetComponent<Button>();
+        //btn.onClick.AddListener(TaskOnClick);
     }
     
     public void Clicked()
     {
-        SceneManager.LoadScene("Stage1S");
+        TAutoFade.LoadLevel(2, 1.0f, 1.0f, Color.black);
+
+        //SceneManager.LoadScene("Stage1S");
     }
     void TaskOnClick()
     {
-        SceneManager.LoadScene("Stage1S");
+        //TAutoFade.LoadLevel(1, 1.0f, 1.0f, Color.black);
+
+        //SceneManager.LoadScene("Stage1S");
         //Debug.Log("You have clicked the button!");
     }
 }
