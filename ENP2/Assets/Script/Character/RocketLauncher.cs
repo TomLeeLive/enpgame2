@@ -22,7 +22,7 @@ public class RocketLauncher : MonoBehaviour {
             rocketPrefab.relativeForce = new Vector3(0,0,speed);
             smokeClone = GameObject.Instantiate(smoke, smokePosition.position, smokePosition.rotation) as GameObject;
             lastShot = Time.time;
-            ammoCount--;
+            //ammoCount--;
         }
     }
     public void Reload()

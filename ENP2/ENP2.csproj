@@ -89,6 +89,8 @@
     <Compile Include="Assets\Script\Character\Smoke.cs" />
     <Compile Include="Assets\Script\Character\StaticVars.cs" />
     <Compile Include="Assets\Script\Character\Waypoints.cs" />
+    <Compile Include="Assets\Script\Effect.cs" />
+    <Compile Include="Assets\Script\Explosion.cs" />
     <Compile Include="Assets\Script\Loading.cs" />
     <Compile Include="Assets\Script\Menu.cs" />
     <Compile Include="Assets\Script\MenuButton1.cs" />

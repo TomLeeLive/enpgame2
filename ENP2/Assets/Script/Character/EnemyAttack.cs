@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+static class Constants
+{
+    public const float fShotTime = 10.0f;
+}
+
 public partial class EnemyMgr : MonoBehaviour
 {
     // 공격 필요 여부를 판단한다.
@@ -12,13 +17,19 @@ public partial class EnemyMgr : MonoBehaviour
         {
             // 장애물 여부를 판단한다.
 
+
+
+#if OBSTACLE_CHECK
             if (Physics.Raycast(transform.position, _direction, out hit, m_fShotRange))
             {
                 if (hit.transform.tag != "Wall")
                 {
                     m_bAiming = true;
                 }
-            }
+#else
+            m_bAiming = true;
+#endif
+
             return true;
         }
         m_bAiming = false;
@@ -70,16 +81,16 @@ public partial class EnemyMgr : MonoBehaviour
         m_Animation.PlayQueued(m_ShotAnimation.name, QueueMode.PlayNow);
         BroadcastMessage("Fire", m_ShotAnimation.length);
 
-        yield return new WaitForSeconds(m_ShotAnimation.length);
+        yield return new WaitForSeconds(m_ShotAnimation.length * Constants.fShotTime);
         m_bShot = false;
     }
     private IEnumerator WaitForPrepare()
     {
-        m_Animation[m_ShotAnimation.name].speed = m_fShotSpeed * 2;
+        m_Animation[m_ShotAnimation.name].speed = m_fShotSpeed;
         m_Animation[m_ShotAnimation.name].wrapMode = WrapMode.ClampForever;
-        m_Animation.CrossFade(m_ShotAnimation.name, 0.6f);
+        m_Animation.CrossFade(m_ShotAnimation.name, 0.1f);
 
-        yield return new WaitForSeconds(m_ShotAnimation.length);
+        yield return new WaitForSeconds(m_ShotAnimation.length * Constants.fShotTime);
         m_bPrepare = true;
     }
 }
