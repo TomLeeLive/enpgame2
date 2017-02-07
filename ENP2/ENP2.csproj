@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -70,9 +67,6 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
@@ -87,9 +81,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Character\EnemyAttack.cs" />
+    <Compile Include="Assets\Script\Character\EnemyMgr.cs" />
+    <Compile Include="Assets\Script\Character\Rocket.cs" />
+    <Compile Include="Assets\Script\Character\RocketLauncher.cs" />
+    <Compile Include="Assets\Script\Character\StaticVars.cs" />
+    <Compile Include="Assets\Script\Character\Waypoints.cs" />
     <Compile Include="Assets\Script\Loading.cs" />
     <Compile Include="Assets\Script\Menu.cs" />
     <Compile Include="Assets\Script\MenuButton1.cs" />
+    <Compile Include="Assets\Script\Player\ShotGun.cs" />
     <Compile Include="Assets\Script\SpriteMgr.cs" />
     <Compile Include="Assets\Script\Stage1.cs" />
     <Compile Include="Assets\Script\Stage1E.cs" />
