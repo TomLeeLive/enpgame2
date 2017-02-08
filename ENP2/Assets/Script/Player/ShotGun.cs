@@ -6,8 +6,9 @@ using TGAME;
 public class ShotGun : MonoBehaviour {
 
     public CharacterController m_Ctl;
-    private Animation m_Animation;
+    public Animation m_Animation;
     private AnimationClip m_Shoot;
+    public FirstPersonController m_Fpc;
 
     void Awake()
     {
@@ -26,10 +27,15 @@ public class ShotGun : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-            if(m_Animation.isPlaying == false)
+            
+
+            if (m_Animation.isPlaying == false)
             {
+                m_Fpc.m_iBullet -= 1;
+
                 m_Animation.CrossFade(m_Shoot.name, 0.1f);
                 TAudioMgr.Instance.PlayEffect("shot1");
+                
             }       
         }
     }

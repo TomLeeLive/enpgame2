@@ -14,6 +14,7 @@ public partial class EnemyMgr : MonoBehaviour
     public AnimationClip m_WalkAnimation;
     public AnimationClip m_RunAnimation;
     public AnimationClip m_ShotAnimation;
+    public AnimationClip m_DieAnimation;
     
     public float m_fWalkSpeed = 1.5f;
     public float m_fIdleSpeed = 1.0f;
@@ -48,6 +49,12 @@ public partial class EnemyMgr : MonoBehaviour
     private float m_fRotateSpeed = 1.0f;
     private float m_fLastTime = 0.0f;
     public GameObject m_Ragdoll;
+
+    public ShotGun m_PlayerShotGun;
+    public Camera fpsCam;
+    public float weaponRange = 50f;
+
+    private bool m_bDead = false;
 
     public float GetHpPercent()
     {
@@ -101,6 +108,9 @@ public partial class EnemyMgr : MonoBehaviour
                 if (m_fHP <= 0)
                 {
                     m_fHP = 0.0f;
+
+
+                    
                     GameObject obj_aiPrefab = GameObject.Instantiate(m_Ragdoll, transform.position, transform.rotation) as GameObject;
 
                     float f_force = 1000;
@@ -111,6 +121,7 @@ public partial class EnemyMgr : MonoBehaviour
                         r.AddExplosionForce(f_force, rocket.transform.position, 100.0f);
                     }
                     GameObject.Destroy(transform.parent.gameObject);
+                    
                 }
             }
         }
@@ -284,6 +295,67 @@ public partial class EnemyMgr : MonoBehaviour
     }   
     void Update()
     {
+        if (m_bDead == true)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+
+            if (m_PlayerShotGun.m_Animation.isPlaying == false)
+            {
+                // Create a vector at the center of our camera's viewport
+                Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+
+                // Declare a raycast hit to store information about what our raycast has hit
+                RaycastHit hit;
+
+                // Check if our raycast has hit anything
+                if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
+                {
+
+
+                    m_fHP -= 20;
+
+                    if(m_fHP <= 0.0f && m_bDead == false)
+                    {
+                        m_bDead = true;
+                        m_Animation.CrossFade(m_DieAnimation.name);
+
+                        Invoke("DestroyNow", 10.0f);
+
+                    }
+
+
+                    //int a = 1;
+
+                    //// Set the end position for our laser line 
+                    //laserLine.SetPosition(1, hit.point);
+
+                    //// Get a reference to a health script attached to the collider we hit
+                    //ShootableBox health = hit.collider.GetComponent<ShootableBox>();
+
+                    //// If there was a health script attached
+                    //if (health != null)
+                    //{
+                    //    // Call the damage function of that script, passing in our gunDamage variable
+                    //    health.Damage(gunDamage);
+                    //}
+
+                    //// Check if the object we hit has a rigidbody attached
+                    //if (hit.rigidbody != null)
+                    //{
+                    //    // Add force to the rigidbody we hit, in the direction from which it was hit
+                    //    hit.rigidbody.AddForce(-hit.normal * hitForce);
+                    //}
+                }
+            }
+        }
+
+
+
+
+
         if ((m_Player != null) && (m_fHP > 0))
         {
             if (StaticVars.b_isGameOver == false)
@@ -336,5 +408,12 @@ public partial class EnemyMgr : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, (m_fPlayerRange + m_fShotRange));
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, m_fShotRange);
+    }
+
+
+    public void DestroyNow()
+    {
+        //transform.DetachChildren();
+        GameObject.Destroy(gameObject);
     }
 }

@@ -84,6 +84,8 @@
     <Compile Include="Assets\Script\Character\CharacterControl.cs" />
     <Compile Include="Assets\Script\Character\EnemyAttack.cs" />
     <Compile Include="Assets\Script\Character\EnemyMgr.cs" />
+    <Compile Include="Assets\Script\Character\FirstPersonController.cs" />
+    <Compile Include="Assets\Script\Character\PlayerStatus.cs" />
     <Compile Include="Assets\Script\Character\Rocket.cs" />
     <Compile Include="Assets\Script\Character\RocketLauncher.cs" />
     <Compile Include="Assets\Script\Character\Smoke.cs" />
@@ -95,7 +97,6 @@
     <Compile Include="Assets\Script\Menu.cs" />
     <Compile Include="Assets\Script\MenuButton1.cs" />
     <Compile Include="Assets\Script\Player\ShotGun.cs" />
-    <Compile Include="Assets\Script\Player_Tom.cs" />
     <Compile Include="Assets\Script\SpriteMgr.cs" />
     <Compile Include="Assets\Script\Stage1.cs" />
     <Compile Include="Assets\Script\Stage1E.cs" />
@@ -111,8 +112,6 @@
     <Compile Include="Assets\Script\TGameMgr.cs" />
     <Compile Include="Assets\Script\TPrefabMgr.cs" />
     <Compile Include="Assets\Script\TPublishInfo.cs" />
-    <Compile Include="Assets\Script\UI\Slider_Bullet.cs" />
-    <Compile Include="Assets\Script\UI\Slider_HP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Shader\AutoFade.shader" />
