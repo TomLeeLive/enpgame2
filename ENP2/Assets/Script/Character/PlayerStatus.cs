@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.SceneManagement;
+using TGAME;
 
 public class PlayerStatus : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class PlayerStatus : MonoBehaviour {
             //게임오버 Scene으로 전환.
             //SceneManager.LoadScene("Stage1");
 
+            TAudioMgr.Instance.PlayEffect("pl_dead");
 
             // Allow it to move on the screen
             Cursor.lockState = CursorLockMode.Confined;

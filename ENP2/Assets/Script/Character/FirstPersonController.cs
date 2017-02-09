@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
-
+using TGAME;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(AudioSource))]
@@ -298,6 +298,7 @@ public class FirstPersonController : MonoBehaviour
                 float f_damege = rocket.getDamage();
                 //m_fHP = Mathf.Clamp(m_fHP - f_damege, 0, m_fMaxHP);
                 m_iHP -= (int)f_damege;
+                TAudioMgr.Instance.PlayEffect("explosion");
                 // b_isGotHit = true;
                 /*
                 if (m_fHP <= 0)

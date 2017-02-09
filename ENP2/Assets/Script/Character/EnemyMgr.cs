@@ -115,6 +115,7 @@ public partial class EnemyMgr : MonoBehaviour
                 //m_fHP = Mathf.Clamp(m_fHP - f_damege, 0, m_fMaxHP);
 
                 m_fHP -= f_damege;
+                TAudioMgr.Instance.PlayEffect("explosion");
                 Debug.Log(m_fHP.ToString());
                 GameObject obj = TPrefabMgr.Instance("Blood", "Blood", collision.transform.position.x, collision.transform.position.y, collision.transform.position.z);
 
@@ -129,6 +130,7 @@ public partial class EnemyMgr : MonoBehaviour
                         //Debug.Log(fpc.m_iScore.ToString());
 
                         m_bDead = true;
+                        TAudioMgr.Instance.PlayEffect("zo_pain");
                         m_Animation.CrossFade(m_DieAnimation.name);
 
                         Invoke("DestroyNow", 10.0f);
@@ -350,6 +352,7 @@ public partial class EnemyMgr : MonoBehaviour
                         if(zomb.Equals(this))
                         {
                             zomb.m_fHP -= 50;
+                            TAudioMgr.Instance.PlayEffect("zo_hit");
                             Debug.Log(zomb.m_fHP.ToString());
                             GameObject obj = TPrefabMgr.Instance("Blood", "Blood", hit.point.x, hit.point.y, hit.point.z);
                         }
@@ -367,6 +370,7 @@ public partial class EnemyMgr : MonoBehaviour
                         //Debug.Log(fpc.m_iScore.ToString());
 
                         m_bDead = true;
+                        TAudioMgr.Instance.PlayEffect("zo_pain");
                         m_Animation.CrossFade(m_DieAnimation.name);
 
                         Invoke("DestroyNow", 10.0f);

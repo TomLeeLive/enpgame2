@@ -25,6 +25,13 @@ namespace TGAME
         {
             Instance.AudioSet("bgm", "bgm/bgm1");
             Instance.AudioSet("shot1", "weapon/shot1");
+
+            Instance.AudioSet("zo_pain", "zombie/zo_pain1");
+            Instance.AudioSet("zo_hit", "hit");
+            Instance.AudioSet("explosion", "explosion");
+            Instance.AudioSet("rocket", "rocket/rocklx1a");
+            Instance.AudioSet("pl_dead", "player/dead_2");
+
             //Instance.AudioSet("bgm", "bgm");
             //Instance.AudioSet("go", "go");
             //Instance.AudioSet("ppo", "ppo");

@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Shader\AutoFade.shader" />
+    <None Include="Assets\Resources\Sound\sound_list.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>

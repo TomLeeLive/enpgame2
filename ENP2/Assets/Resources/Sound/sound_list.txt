@@ -1,0 +1,19 @@
+좀비 죽는소리 zombie/zo_pain1
+좀비 맞는소리 hit.wav
+좀비 로켓맞는소리 explosion.wav
+좀비 로켓발사소리 rocket/rocklx1a.wav
+
+주인공 로켓맞는소리 explosion.wav
+주인공 죽는소리 player/dead_2
+엔딩 음악
+---------------------------------------------
+TAudioMgr.Instance.PlayEffect("shot1");
+---------------------------------------------
+Instance.AudioSet("bgm", "bgm/bgm1");
+Instance.AudioSet("shot1", "weapon/shot1");
+
+Instance.AudioSet("zo_pain", "zombie/zo_pain1");
+Instance.AudioSet("zo_hit", "hit");
+Instance.AudioSet("explosion", "explosion");
+Instance.AudioSet("rocket", "rocket/rocklx1a");
+Instance.AudioSet("pl_dead", "player/dead_2");

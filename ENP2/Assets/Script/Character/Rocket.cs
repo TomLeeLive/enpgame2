@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TGAME;
 
 [RequireComponent(typeof(ConstantForce))]
 public class Rocket : MonoBehaviour {
@@ -24,6 +25,7 @@ public class Rocket : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        TAudioMgr.Instance.PlayEffect("rocket");
         Invoke("KillObject", timeOut);
 	}
     public void OnCollisionEnter(Collision others)
