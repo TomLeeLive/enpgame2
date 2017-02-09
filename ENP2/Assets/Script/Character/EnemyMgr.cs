@@ -118,10 +118,8 @@ public partial class EnemyMgr : MonoBehaviour
                 if (m_fHP <= 0)
                 {
                     m_fHP = 0.0f;
-                    fpc.m_iScore += 10;
-
-
-                    Debug.Log(fpc.m_iScore.ToString());
+                    //fpc.m_iScore += 10;
+                    //Debug.Log(fpc.m_iScore.ToString());
 
                     m_bDead = true;
                     m_Animation.CrossFade(m_DieAnimation.name);
@@ -342,9 +340,15 @@ public partial class EnemyMgr : MonoBehaviour
                     if (hit.transform.tag == "Zombie")
                     {
                         EnemyMgr zomb = hit.collider.GetComponent<EnemyMgr>();
-                        zomb.m_fHP -= 20;
-                        //m_fHP -= 20;
-                        GameObject obj = TPrefabMgr.Instance("Blood", "Blood", hit.point.x, hit.point.y, hit.point.z);
+                        if(zomb.Equals(this))
+                        {
+                            zomb.m_fHP -= 20;
+                            Debug.Log(zomb.m_fHP.ToString());
+                            //m_fHP -= 20;
+                            GameObject obj = TPrefabMgr.Instance("Blood", "Blood", hit.point.x, hit.point.y, hit.point.z);
+                        }
+                    
+
                     }
 
                     
@@ -353,8 +357,8 @@ public partial class EnemyMgr : MonoBehaviour
 
                     if (m_fHP <= 0.0f && m_bDead == false)
                     {
-                        fpc.m_iScore += 10;
-                        Debug.Log(fpc.m_iScore.ToString());
+                        //fpc.m_iScore += 10;
+                        //Debug.Log(fpc.m_iScore.ToString());
 
                         m_bDead = true;
                         m_Animation.CrossFade(m_DieAnimation.name);

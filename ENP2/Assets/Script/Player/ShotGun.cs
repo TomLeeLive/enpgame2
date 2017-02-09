@@ -35,7 +35,9 @@ public class ShotGun : MonoBehaviour {
 
                 m_Animation.CrossFade(m_Shoot.name, 0.1f);
                 TAudioMgr.Instance.PlayEffect("shot1");
-                
+
+                Transform GunfirePos = transform.Find("GunFirePos");
+                GameObject obj = TPrefabMgr.Instance("Shot", "Shot", GunfirePos.transform.position.x, GunfirePos.transform.position.y, GunfirePos.transform.position.z);
             }       
         }
     }

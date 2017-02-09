@@ -62,14 +62,14 @@ public class FirstPersonController : MonoBehaviour
     //HP
     public int m_iHP = 100;
     public int m_iBullet = 100;
-    public int m_iScore = 0;
+    //public int m_iScore = 0;
 
     // Use this for initialization
     private void Start()
     {
-        m_iHP = 100;
-        m_iBullet = 100;
-        m_iScore = 0;
+        //m_iHP = 100;
+        //m_iBullet = 100;
+        //m_iScore = 0;
 
         m_CharacterController = GetComponent<CharacterController>();
         m_Camera = Camera.main;
