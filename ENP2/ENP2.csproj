@@ -101,6 +101,7 @@
     <Compile Include="Assets\Script\SpriteMgr.cs" />
     <Compile Include="Assets\Script\Stage1.cs" />
     <Compile Include="Assets\Script\Stage1E.cs" />
+    <Compile Include="Assets\Script\Stage1End.cs" />
     <Compile Include="Assets\Script\Stage1S.cs" />
     <Compile Include="Assets\Script\Stage2.cs" />
     <Compile Include="Assets\Script\Stage2E.cs" />

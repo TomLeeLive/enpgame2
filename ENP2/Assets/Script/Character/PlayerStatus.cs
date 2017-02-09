@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour {
 
@@ -27,8 +28,18 @@ public class PlayerStatus : MonoBehaviour {
         if (m_SliderHP.value <= 0.0f)
         {
             //게임오버 Scene으로 전환.
+            //SceneManager.LoadScene("Stage1");
 
-           // TAutoFade.LoadLevel(1, 1.0f, 1.0f, Color.black);
+
+            // Allow it to move on the screen
+            Cursor.lockState = CursorLockMode.Confined;
+            // Show the cursor
+            UnityEngine.Cursor.visible = true;
+            //게임오버 Scene으로 전환.
+            TAutoFade.LoadLevel(4, 1.0f, 1.0f, Color.black);
+
+
+
         }
     }
 }

@@ -25,6 +25,15 @@ public class MenuButton1 : MonoBehaviour
         //Button btn = yourButton.GetComponent<Button>();
         //btn.onClick.AddListener(TaskOnClick);
     }
+    void Update()
+    {
+    
+        if (Input.GetKey(KeyCode.Space))
+        {
+            //Stage1S으로
+            TAutoFade.LoadLevel(2, 1.0f, 1.0f, Color.black);
+        }
+    }
     
     public void Clicked()
     {

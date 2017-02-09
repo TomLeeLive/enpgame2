@@ -349,9 +349,8 @@ public partial class EnemyMgr : MonoBehaviour
                         EnemyMgr zomb = hit.collider.GetComponent<EnemyMgr>();
                         if(zomb.Equals(this))
                         {
-                            zomb.m_fHP -= 20;
+                            zomb.m_fHP -= 50;
                             Debug.Log(zomb.m_fHP.ToString());
-                            //m_fHP -= 20;
                             GameObject obj = TPrefabMgr.Instance("Blood", "Blood", hit.point.x, hit.point.y, hit.point.z);
                         }
                     
