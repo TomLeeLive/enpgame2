@@ -51,7 +51,7 @@ public partial class EnemyMgr : MonoBehaviour
     private float m_fLastTime = 0.0f;
     public GameObject m_Ragdoll;
 
-    public ShotGun m_PlayerShotGun;
+    public ShotGun m_PlayerShotGun = null;
     public Camera fpsCam;
     public float weaponRange = 50f;
     public FirstPersonController fpc;
@@ -65,6 +65,10 @@ public partial class EnemyMgr : MonoBehaviour
 
     public void Awake()
     {
+        m_RocketLauncher = GetComponentInChildren<RocketLauncher>();
+        m_Player = Camera.main.transform;
+        fpsCam = Camera.main.GetComponentInChildren<Camera>();
+
         m_Ctl = GetComponent<CharacterController>();
         m_bRun = false;
         m_bAiming = false;
@@ -85,6 +89,8 @@ public partial class EnemyMgr : MonoBehaviour
 
         m_Animation[m_IdleAnimation.name].speed = m_fIdleSpeed;
         m_Animation[m_IdleAnimation.name].wrapMode = WrapMode.Loop;
+
+        //m_PlayerShotGun = fpsCam.GetComponentInChildren<ShotGun>();
     }
     // Use this for initialization
     void Start()
@@ -98,35 +104,46 @@ public partial class EnemyMgr : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (StaticVars.b_isGameOver == false)
-        {
+        //if (StaticVars.b_isGameOver == false)
+        //{
             if (collision.transform.tag == "Rocket")
             {
                 Rocket rocket = collision.gameObject.GetComponent<Rocket>();
                 float f_damege = rocket.getDamage();
-                //m_fHP = Mathf.Clamp(m_fHP - f_damege, 0, m_fMaxHP);
-                m_fHP -= f_damege;
+            //m_fHP = Mathf.Clamp(m_fHP - f_damege, 0, m_fMaxHP);
+
+            EnemyMgr zomb  = collision.collider.GetComponent<EnemyMgr>();
+            zomb.m_fHP -= f_damege;
                 // b_isGotHit = true;
                 if (m_fHP <= 0)
                 {
                     m_fHP = 0.0f;
+                    fpc.m_iScore += 10;
 
 
-                    
-                    GameObject obj_aiPrefab = GameObject.Instantiate(m_Ragdoll, transform.position, transform.rotation) as GameObject;
+                    Debug.Log(fpc.m_iScore.ToString());
 
-                    float f_force = 1000;
-                    Rigidbody[] a_rigid = obj_aiPrefab.GetComponentsInChildren<Rigidbody>();
+                    m_bDead = true;
+                    m_Animation.CrossFade(m_DieAnimation.name);
 
-                    foreach (Rigidbody r in a_rigid)
-                    {
-                        r.AddExplosionForce(f_force, rocket.transform.position, 100.0f);
-                    }
-                    GameObject.Destroy(transform.parent.gameObject);
-                    
+                    Invoke("DestroyNow", 10.0f);
+
+                /*
+                GameObject obj_aiPrefab = GameObject.Instantiate(m_Ragdoll, transform.position, transform.rotation) as GameObject;
+
+                float f_force = 1000;
+                Rigidbody[] a_rigid = obj_aiPrefab.GetComponentsInChildren<Rigidbody>();
+
+                foreach (Rigidbody r in a_rigid)
+                {
+                    r.AddExplosionForce(f_force, rocket.transform.position, 100.0f);
                 }
+                GameObject.Destroy(transform.parent.gameObject);
+                */
+
             }
-        }
+            }
+        //}
     }
     
     // 점프 필요여부를 판정한다.
@@ -317,13 +334,16 @@ public partial class EnemyMgr : MonoBehaviour
                 {
 
 
-                    m_fHP -= 20;
+                   
                     
 
 
 
                     if (hit.transform.tag == "Zombie")
                     {
+                        EnemyMgr zomb = hit.collider.GetComponent<EnemyMgr>();
+                        zomb.m_fHP -= 20;
+                        //m_fHP -= 20;
                         GameObject obj = TPrefabMgr.Instance("Blood", "Blood", hit.point.x, hit.point.y, hit.point.z);
                     }
 
@@ -334,6 +354,8 @@ public partial class EnemyMgr : MonoBehaviour
                     if (m_fHP <= 0.0f && m_bDead == false)
                     {
                         fpc.m_iScore += 10;
+                        Debug.Log(fpc.m_iScore.ToString());
+
                         m_bDead = true;
                         m_Animation.CrossFade(m_DieAnimation.name);
 
@@ -373,8 +395,8 @@ public partial class EnemyMgr : MonoBehaviour
 
         if ((m_Player != null) && (m_fHP > 0))
         {
-            if (StaticVars.b_isGameOver == false)
-            {
+            //if (StaticVars.b_isGameOver == false)
+            //{
                 Vector3 vPos = m_Player.position;
                 vPos.y += 1.0f;
                 Vector3 vRocketDirection = (vPos - transform.position).normalized;
@@ -402,11 +424,11 @@ public partial class EnemyMgr : MonoBehaviour
                 {
                     AttackMove(vRocketDirection);
                 }
-            }
-            else
-            {
-                m_Animation.CrossFade(m_IdleAnimation.name);
-            }
+            //}
+            //else
+            //{
+            //    m_Animation.CrossFade(m_IdleAnimation.name);
+            //}
         }
     }
     

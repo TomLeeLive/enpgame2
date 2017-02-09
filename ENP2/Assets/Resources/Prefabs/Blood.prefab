@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b478978eec4e424d989de02166842df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Camera: {fileID: 20950637116525638, guid: dde86f57cab23c541be93f8e2bb18853, type: 2}
 --- !u!212 &212580934543886530
 SpriteRenderer:
   m_ObjectHideFlags: 1

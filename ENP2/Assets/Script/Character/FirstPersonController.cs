@@ -67,6 +67,10 @@ public class FirstPersonController : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        m_iHP = 100;
+        m_iBullet = 100;
+        m_iScore = 0;
+
         m_CharacterController = GetComponent<CharacterController>();
         m_Camera = Camera.main;
         m_OriginalCameraPosition = m_Camera.transform.localPosition;

@@ -5,14 +5,14 @@ using TGAME;
 
 public class ShotGun : MonoBehaviour {
 
-    public CharacterController m_Ctl;
+    //public CharacterController m_Ctl;
     public Animation m_Animation;
     private AnimationClip m_Shoot;
     public FirstPersonController m_Fpc;
 
     void Awake()
     {
-        m_Ctl = GetComponent<CharacterController>();
+        //m_Ctl = GetComponent<CharacterController>();
         m_Animation = GetComponent<Animation>();
         m_Shoot = m_Animation.GetClip("shoot");
 

@@ -10,6 +10,10 @@ public class PlayerStatus : MonoBehaviour {
     public Text m_Text = null;
     public FirstPersonController fpc = null;
 
+    void Awake()
+    {
+        //fpc = Camera.main.GetComponentInChildren<FirstPersonController>();
+    }
     // Use this for initialization
     void Start () {
         //m_SliderHP = gameObject.GetComponentInChildren<Slider>();

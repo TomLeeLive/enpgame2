@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Blood : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         Invoke("DestroyNow", 0.5f);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        //transform.LookAt(m_Camera.transform.position, -Vector3.up);
         transform.LookAt(Camera.main.transform.position, -Vector3.up);
     }
 
