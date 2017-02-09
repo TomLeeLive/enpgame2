@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TGAME;
 
 [RequireComponent(typeof(CharacterController))]
 public partial class EnemyMgr : MonoBehaviour
@@ -317,7 +318,19 @@ public partial class EnemyMgr : MonoBehaviour
 
                     m_fHP -= 20;
 
-                    if(m_fHP <= 0.0f && m_bDead == false)
+
+
+
+                    if (hit.transform.tag == "Zombie")
+                    {
+                        GameObject obj = TPrefabMgr.Instance("Blood", "Blood", hit.point.x, hit.point.y, hit.point.z);
+                    }
+
+                    
+
+
+
+                    if (m_fHP <= 0.0f && m_bDead == false)
                     {
                         m_bDead = true;
                         m_Animation.CrossFade(m_DieAnimation.name);
