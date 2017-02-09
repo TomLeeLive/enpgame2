@@ -5,7 +5,7 @@ using System.Collections;
 public class Rocket : MonoBehaviour {
 
     public float timeOut = 3.0f;
-    private float f_damage = 20;
+    private float f_damage = 50;
     public GameObject explosionParticle;
 
     public float explosionRadius = 2.0f;

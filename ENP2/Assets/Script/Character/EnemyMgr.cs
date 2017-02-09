@@ -104,42 +104,49 @@ public partial class EnemyMgr : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (m_bDead == true)
+            return;
         //if (StaticVars.b_isGameOver == false)
         //{
             if (collision.transform.tag == "Rocket")
             {
                 Rocket rocket = collision.gameObject.GetComponent<Rocket>();
                 float f_damege = rocket.getDamage();
-            //m_fHP = Mathf.Clamp(m_fHP - f_damege, 0, m_fMaxHP);
+                //m_fHP = Mathf.Clamp(m_fHP - f_damege, 0, m_fMaxHP);
 
-            EnemyMgr zomb  = collision.collider.GetComponent<EnemyMgr>();
-            zomb.m_fHP -= f_damege;
+                m_fHP -= f_damege;
+                Debug.Log(m_fHP.ToString());
+                GameObject obj = TPrefabMgr.Instance("Blood", "Blood", collision.transform.position.x, collision.transform.position.y, collision.transform.position.z);
+
+           
+
+
                 // b_isGotHit = true;
                 if (m_fHP <= 0)
-                {
-                    m_fHP = 0.0f;
-                    //fpc.m_iScore += 10;
-                    //Debug.Log(fpc.m_iScore.ToString());
+                    {
+                        m_fHP = 0.0f;
+                        //fpc.m_iScore += 10;
+                        //Debug.Log(fpc.m_iScore.ToString());
 
-                    m_bDead = true;
-                    m_Animation.CrossFade(m_DieAnimation.name);
+                        m_bDead = true;
+                        m_Animation.CrossFade(m_DieAnimation.name);
 
-                    Invoke("DestroyNow", 10.0f);
+                        Invoke("DestroyNow", 10.0f);
 
-                /*
-                GameObject obj_aiPrefab = GameObject.Instantiate(m_Ragdoll, transform.position, transform.rotation) as GameObject;
+                    /*
+                    GameObject obj_aiPrefab = GameObject.Instantiate(m_Ragdoll, transform.position, transform.rotation) as GameObject;
 
-                float f_force = 1000;
-                Rigidbody[] a_rigid = obj_aiPrefab.GetComponentsInChildren<Rigidbody>();
+                    float f_force = 1000;
+                    Rigidbody[] a_rigid = obj_aiPrefab.GetComponentsInChildren<Rigidbody>();
 
-                foreach (Rigidbody r in a_rigid)
-                {
-                    r.AddExplosionForce(f_force, rocket.transform.position, 100.0f);
+                    foreach (Rigidbody r in a_rigid)
+                    {
+                        r.AddExplosionForce(f_force, rocket.transform.position, 100.0f);
+                    }
+                    GameObject.Destroy(transform.parent.gameObject);
+                    */
+
                 }
-                GameObject.Destroy(transform.parent.gameObject);
-                */
-
-            }
             }
         //}
     }
