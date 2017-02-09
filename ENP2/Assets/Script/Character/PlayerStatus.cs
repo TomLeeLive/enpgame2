@@ -7,6 +7,7 @@ public class PlayerStatus : MonoBehaviour {
 
     public Slider m_SliderHP = null;
     public Slider m_SliderBullet = null;
+    public Text m_Text = null;
     public FirstPersonController fpc = null;
 
     // Use this for initialization
@@ -18,6 +19,7 @@ public class PlayerStatus : MonoBehaviour {
     void Update () {
         m_SliderHP.value = (float)fpc.m_iHP / 100.0f; //Mathf.MoveTowards(m_SliderHP.value, 1.0f, 0.008f);
         m_SliderBullet.value = (float)fpc.m_iBullet / 100.0f; //Mathf.MoveTowards(m_SliderHP.value, 1.0f, 0.008f);
+        m_Text.text = "Score: " + fpc.m_iScore.ToString();
         if (m_SliderHP.value <= 0.0f)
         {
             //게임오버 Scene으로 전환.

@@ -54,6 +54,7 @@ public partial class EnemyMgr : MonoBehaviour
     public ShotGun m_PlayerShotGun;
     public Camera fpsCam;
     public float weaponRange = 50f;
+    public FirstPersonController fpc;
 
     private bool m_bDead = false;
 
@@ -317,7 +318,7 @@ public partial class EnemyMgr : MonoBehaviour
 
 
                     m_fHP -= 20;
-
+                    
 
 
 
@@ -332,6 +333,7 @@ public partial class EnemyMgr : MonoBehaviour
 
                     if (m_fHP <= 0.0f && m_bDead == false)
                     {
+                        fpc.m_iScore += 10;
                         m_bDead = true;
                         m_Animation.CrossFade(m_DieAnimation.name);
 

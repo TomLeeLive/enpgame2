@@ -216,6 +216,7 @@ MonoBehaviour:
   m_PlayerShotGun: {fileID: 1068711301}
   fpsCam: {fileID: 104619553}
   weaponRange: 50
+  fpc: {fileID: 490816362}
 --- !u!143 &350026258
 CharacterController:
   m_ObjectHideFlags: 0
@@ -560,6 +561,7 @@ MonoBehaviour:
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   m_iHP: 100
   m_iBullet: 100
+  m_iScore: 0
 --- !u!4 &551748992 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -1737,6 +1739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SliderHP: {fileID: 642540865}
   m_SliderBullet: {fileID: 984535014}
+  m_Text: {fileID: 1217588538}
   fpc: {fileID: 490816362}
 --- !u!1001 &1510248885
 Prefab:
